@@ -189,7 +189,6 @@ Ao final do exercício, o aluno deverá compreender:
 
 O projeto deve conter:
 
-* Arquivos `.java`
-* Código organizado em múltiplas classes
-* Comentários explicando decisões de modelagem
-* Programa executável via `main`
+* Projeto zipado ou repositório no GitHub
+* Link no BlackBoard
+* 26/02/2026
