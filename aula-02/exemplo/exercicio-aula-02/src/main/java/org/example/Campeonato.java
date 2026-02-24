@@ -8,7 +8,7 @@ public class Campeonato {
 
     public static void main(String[] args) {
 
-        ArrayList<String[]> partidas = Arquivo.abrirArquivo("partidas.csv");
+        ArrayList<Partida> partidas = Arquivo.abrirArquivo("partidas.csv");
 
         Tabela tabela = new Tabela();
 
@@ -24,59 +24,28 @@ public class Campeonato {
 
         System.out.println("=== LISTA DE PARTIDAS ===");
 
-        for (String[] p : partidas) {
+        for (Partida p : partidas) {
 
-            String mandante = p[0];
-            String visitante = p[1];
-            int golsMandante = Integer.parseInt(p[2]);
-            int golsVisitante = Integer.parseInt(p[3]);
-            String estadio = p[4];
-            int publico = Integer.parseInt(p[5]);
-            double preco = Double.parseDouble(p[6]);
+            System.out.println(p.mandante + " " + p.golsMandante + " x " + p.golsVisitante + " " + p.visitante);
 
-            System.out.println(mandante + " " + golsMandante + " x " + golsVisitante + " " + visitante);
+            tabela.registroTime(p.mandante, p.golsMandante, p.golsVisitante);
+            tabela.registroTime(p.visitante, p.golsVisitante, p.golsMandante);
 
-            tabela.registroTime(mandante, golsMandante, golsVisitante);
-            tabela.registroTime(visitante, golsVisitante, golsMandante);
+            tabela.verificaPartida(p.mandante, p.visitante, p.golsMandante, p.golsVisitante);
 
-            tabela.verificaPartida(mandante, visitante, golsMandante, golsVisitante);
+            totalGolsCampeonato += p.golsMandante + p.golsVisitante;
 
-            totalGolsCampeonato += golsMandante + golsVisitante;
-
-            double renda = publico * preco;
+            double renda = p.publico * p.preco;
             rendaTotal += renda;
 
-            if (publico > maiorPublico) {
-                maiorPublico = publico;
-                maiorPublicoPartida = mandante + " x " + visitante;
+            if (p.publico > maiorPublico) {
+                maiorPublico = p.publico;
+                maiorPublicoPartida = p.mandante + " x " + p.visitante;
             }
 
             if (renda > maiorRenda) {
                 maiorRenda = renda;
-                maiorRendaPartida = mandante + " x " + visitante;
-            }
-        }
-
-        tabela.verificaLider();
-
-        String melhorAtaque = "";
-        int maxGols = -1;
-
-        for (String time : golsMarcados.keySet()) {
-            if (golsMarcados.get(time) > maxGols) {
-                maxGols = golsMarcados.get(time);
-                melhorAtaque = time;
-            }
-        }
-
-        String melhorSaldo = "";
-        int maxSaldo = -9999;
-
-        for (String time : golsMarcados.keySet()) {
-            int saldo = golsMarcados.get(time) - golsSofridos.get(time);
-            if (saldo > maxSaldo) {
-                maxSaldo = saldo;
-                melhorSaldo = time;
+                maiorRendaPartida = p.mandante + " x " + p.visitante;
             }
         }
 
@@ -89,9 +58,9 @@ public class Campeonato {
         System.out.println("Renda total: R$ " + rendaTotal);
 
         System.out.println("\n=== DESTAQUES ===");
-        System.out.println("Lider do campeonato: " + lider + " (" + maxPontos + " pontos)");
-        System.out.println("Melhor ataque: " + melhorAtaque + " (" + maxGols + " gols)");
-        System.out.println("Melhor saldo de gols: " + melhorSaldo + " (" + maxSaldo + ")");
+        tabela.verificaLider();
+        tabela.melhorAtaque();
+        tabela.melhorSaldo();
         System.out.println("Maior publico: " + maiorPublico + " na partida " + maiorPublicoPartida);
         System.out.println("Maior renda: R$ " + maiorRenda + " na partida " + maiorRendaPartida);
     }

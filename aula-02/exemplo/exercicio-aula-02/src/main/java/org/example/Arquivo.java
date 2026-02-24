@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class Arquivo {
 
-    public static ArrayList<String[]> abrirArquivo(String nomeArquivo) {
+    public static ArrayList<Partida> abrirArquivo(String nomeArquivo) {
 
-        ArrayList<String[]> partidas = new ArrayList<>();
+        ArrayList<Partida> partidas = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new FileReader(nomeArquivo));
             String linha;
@@ -17,7 +17,11 @@ public class Arquivo {
 
             while ((linha = br.readLine()) != null) {
                 String[] dados = linha.split(",");
-                partidas.add(dados);
+
+                Partida partida = new Partida();
+                partida.registraPartida(dados);
+
+                partidas.add(partida);
             }
 
             br.close();

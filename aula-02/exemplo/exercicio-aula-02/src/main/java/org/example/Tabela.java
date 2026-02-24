@@ -45,5 +45,33 @@ public class Tabela {
         System.out.println(lider);
     }
 
+    public void melhorSaldo() {
+        String melhorSaldo = "";
+        int maxSaldo = -9999;
+
+        for (Time time : times.values()) {
+            int saldo = time.golsMarcados - time.golsSofridos;
+            if (saldo > maxSaldo) {
+                maxSaldo = saldo;
+                melhorSaldo = time.nome;
+            }
+        }
+        System.out.println(melhorSaldo);
+    }
+
+    public void melhorAtaque() {
+
+        String melhorAtaque = "";
+        int maxGols = -1;
+
+        for (Time time : times.values()) {
+            if (time.golsMarcados > maxGols) {
+                maxGols = time.golsMarcados;
+                melhorAtaque = time.nome;
+            }
+        }
+        System.out.println(melhorAtaque);
+    }
+
 
 }
