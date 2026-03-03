@@ -47,7 +47,7 @@ public class Paciente {
 
     public void imprime() {
         System.out.println("### Paciente ###");
-        System.out.format("Nome %s", nome);
-        System.out.format("CPF: %s", cpf);
+        System.out.format("Nome %s \n", nome);
+        System.out.format("CPF: %s \n", cpf);
     }
 }
