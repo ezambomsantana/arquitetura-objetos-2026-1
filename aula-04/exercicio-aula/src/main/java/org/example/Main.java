@@ -37,8 +37,14 @@ public class Main {
                 System.out.println("Digite a idade");
                 int idade = scanner.nextInt();
 
+                if (pacientes.containsKey(cpf)) {
+                    System.out.println("Paciente já existe");
+                    continue;
+                }
+
                 if (nome == null || cpf == null || idade < 0) {
                     System.out.println("Dados inválidos");
+                    continue;
                 }
 
                 Paciente paciente = new Paciente(nome, cpf, idade);
