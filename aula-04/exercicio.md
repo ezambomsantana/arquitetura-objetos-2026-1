@@ -1,5 +1,7 @@
 # 🎵 Sistema de Streaming de Música - Modelagem OO
 
+Os relacionamentos não estão definidos no modelo de propósito, pensem qual seria o melhor relacionamento entre as classes que devem ser implementadas.
+
 ---
 
 ## 👤 Usuario
@@ -11,8 +13,6 @@
 - 🔸 `dataCadastro : LocalDate`
 - 🔸 `dataNascimento : LocalDate`
 - 🔸 `paisOrigem : String`
-- 🔸 `assinatura : Assinatura`
-- 🔸 `playlists : List<Playlist>`
 
 ### ⚙️ Métodos (Sugestão)
 - 🔹 `assinarPlano(plano : Plano) : void`
@@ -30,7 +30,6 @@
 - 🔸 `dataFim : LocalDate`
 - 🔸 `status : StatusAssinatura`
 - 🔸 `renovacaoAutomatica : boolean`
-- 🔸 `plano : Plano`
 
 ### ⚙️ Métodos (Sugestão)
 - 🔹 `ativar() : void`
@@ -51,7 +50,6 @@
 
 ### ⚙️ Métodos (Sugestão)
 - 🔹 `alterarValor(novoValor : double) : void`
-- 🔹 `permiteMultiplosDispositivos() : boolean`
 
 ---
 
@@ -65,12 +63,10 @@
 - 🔸 `generoPrincipal : String`
 - 🔸 `numeroSeguidores : long`
 - 🔸 `verificado : boolean`
-- 🔸 `albuns : List<Album>`
 
 ### ⚙️ Métodos (Sugestão)
 - 🔹 `adicionarAlbum(album : Album) : void`
 - 🔹 `ganharSeguidores(qtd : int) : void`
-- 🔹 `verificarConta() : void`
 
 ---
 
@@ -79,8 +75,6 @@
 ### 📌 Atributos
 - 🔸 `titulo : String`
 - 🔸 `dataLancamento : LocalDate`
-- 🔸 `artista : Artista`
-- 🔸 `musicas : List<Musica>`
 - 🔸 `genero : String`
 
 ### ⚙️ Métodos (Sugestão)
@@ -98,8 +92,6 @@
 - 🔸 `genero : String`
 - 🔸 `dataLancamento : LocalDate`
 - 🔸 `letra : String`
-- 🔸 `artista : Artista`
-- 🔸 `album : Album`
 
 ### ⚙️ Métodos (Sugestão)
 - 🔹 `reproduzir() : void`
@@ -116,11 +108,10 @@
 - 🔸 `publica : boolean`
 - 🔸 `numeroSeguidores : long`
 - 🔸 `descricao : String`
-- 🔸 `musicas : List<Musica>`
-- 🔸 `criador : Usuario`
 
 ### ⚙️ Métodos (Sugestão)
 - 🔹 `adicionarMusica(musica : Musica) : void`
 - 🔹 `removerMusica(musica : Musica) : void`
 - 🔹 `ganharSeguidores(qtd : int) : void`
 - 🔹 `calcularDuracaoTotal() : int`
+- 🔹 `verificarMusicaMaisTocada() : Musica`
