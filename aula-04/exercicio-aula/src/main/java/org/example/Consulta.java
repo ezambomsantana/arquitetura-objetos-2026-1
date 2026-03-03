@@ -34,9 +34,9 @@ public class Consulta {
 
     public void imprime() {
 
-        System.out.println("### Consulta: " + id);
-        System.out.format("Paciente: %s", paciente.getNome());
-        System.out.format("Data: %s" + data);
+        System.out.format("### Consulta: %s \n", id);
+        System.out.format("Paciente: %s \n", paciente.getNome());
+        System.out.format("Data: %s \n", data);
 
     }
 }

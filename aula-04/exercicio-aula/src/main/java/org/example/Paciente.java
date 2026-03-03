@@ -7,10 +7,11 @@ public class Paciente {
     private int idade;
     private String endereco;
 
-    public Paciente(String nome, String cpf, int idade) {
+    public Paciente(String nome, String cpf, int idade, String endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
+        this.endereco = endereco;
     }
 
     public String getNome() {

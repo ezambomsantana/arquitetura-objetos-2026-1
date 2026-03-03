@@ -9,8 +9,8 @@ public class Main {
 
     static void main() {
 
-        HashMap<String, Paciente> pacientes = new HashMap<>();
-        HashMap<String, Consulta> consultas = new HashMap<>();
+        PacienteService pacienteService = new PacienteService();
+        ConsultaService consultaService = new ConsultaService();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -37,25 +37,12 @@ public class Main {
                 System.out.println("Digite a idade");
                 int idade = scanner.nextInt();
 
-                if (pacientes.containsKey(cpf)) {
-                    System.out.println("Paciente já existe");
-                    continue;
-                }
-
-                if (nome == null || cpf == null || idade < 0) {
-                    System.out.println("Dados inválidos");
-                    continue;
-                }
-
-                Paciente paciente = new Paciente(nome, cpf, idade);
-                pacientes.put(paciente.getCpf(), paciente);
+                pacienteService.cadastrarPaciente(nome, cpf, idade, null);
 
             }
 
             if (opcao.equals("2")) {
-                for (Paciente paciente : pacientes.values()) {
-                    paciente.imprime();
-                }
+                pacienteService.listarPacientes();
             }
 
             if (opcao.equals("3")) {
@@ -63,22 +50,14 @@ public class Main {
                 System.out.println("Digite o cpf do paciente");
                 String cpf = scanner.next();
 
-                Paciente paciente = pacientes.get(cpf);
-                if (paciente != null) {
-                    Consulta consulta = new Consulta();
-                    consulta.setPaciente(paciente);
-                    consulta.setData(LocalDateTime.now().plusDays(5));
-                    consulta.setId(UUID.randomUUID().toString());
-                    consultas.put(consulta.getId(), consulta);
-                    System.out.println("Consulta cadastrada com sucesso");
-                }
+                Paciente paciente = pacienteService.buscarPaciente(cpf);
+
+                consultaService.cadastrarConsulta(paciente);
 
             }
 
             if (opcao.equals("4")) {
-                for (Consulta consulta : consultas.values()) {
-                    consulta.imprime();
-                }
+                consultaService.listarConsultas();
             }
 
 
