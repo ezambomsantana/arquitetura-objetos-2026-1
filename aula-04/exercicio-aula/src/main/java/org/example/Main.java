@@ -14,7 +14,8 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        String opcao = "";
+        while (!opcao.equals("5")) {
 
             System.out.println(
                     """
@@ -23,9 +24,10 @@ public class Main {
                             2 - Listar Pacientes
                             3 - Cadastrar Consulta
                             4 - Listar Consultas
+                            5 - Sair
                     """
             );
-            String opcao = scanner.next();
+            opcao = scanner.next();
 
             if (opcao.equals("1")) {
                 System.out.println("Digite o nome");
