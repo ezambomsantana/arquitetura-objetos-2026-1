@@ -217,5 +217,5 @@ A aplicação deve:
 - Código organizado
 - README explicando como rodar a aplicação
 - Coleção Postman
-- Data: 17/03
+- Data: 12/03
 - Onde: BlackBoard - Entrega 2
