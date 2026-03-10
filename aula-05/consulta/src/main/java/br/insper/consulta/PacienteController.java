@@ -30,7 +30,7 @@ public class PacienteController {
 
     @DeleteMapping("/paciente/{cpf}")
     public void deletePaciente(@PathVariable String cpf) {
-
+        pacienteService.deletePaciente(cpf);
     }
 
 }

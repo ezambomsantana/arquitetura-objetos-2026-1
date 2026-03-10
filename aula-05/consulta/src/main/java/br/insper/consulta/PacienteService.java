@@ -24,9 +24,6 @@ public class PacienteService {
     }
 
     public Collection<Paciente> listarPacientes(Integer idade) {
-
-        float a = null;
-        Float b = null;
         if (idade != null) {
 
             Collection<Paciente> resposta = new ArrayList<>();
@@ -43,6 +40,15 @@ public class PacienteService {
     }
 
     public Paciente buscarPaciente(String cpf) {
-        return pacientes.get(cpf);
+        Paciente paciente = pacientes.get(cpf);
+        if (paciente == null) {
+            throw new RuntimeException("Paciente nao encontrado");
+        }
+        return paciente;
+    }
+
+    public void deletePaciente(String cpf) {
+        Paciente paciente = buscarPaciente(cpf);
+        pacientes.remove(cpf);
     }
 }
