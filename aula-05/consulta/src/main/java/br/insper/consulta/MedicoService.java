@@ -1,9 +1,12 @@
 package br.insper.consulta;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.UUID;
 
+@Service
 public class MedicoService {
 
     private HashMap<String, Medico> medicos = new HashMap<>();
@@ -24,7 +27,7 @@ public class MedicoService {
     public Medico getMedico(String crm) {
         Medico medico = medicos.get(crm);
         if (medico == null) {
-            throw new RuntimeException("Consulta não encontrada");
+            throw new RuntimeException("Médico não encontrado");
         }
         return medico;
     }

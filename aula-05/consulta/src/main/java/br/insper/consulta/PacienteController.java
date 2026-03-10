@@ -1,5 +1,6 @@
 package br.insper.consulta;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,8 @@ import java.util.Collection;
 @RestController
 public class PacienteController {
 
-    private PacienteService pacienteService = new PacienteService();
+    @Autowired
+    private PacienteService pacienteService;
 
     @GetMapping("/paciente")
     public Collection<Paciente> getPacientes(

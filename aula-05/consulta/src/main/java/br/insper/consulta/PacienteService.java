@@ -1,9 +1,12 @@
 package br.insper.consulta;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
+@Service
 public class PacienteService {
 
     private HashMap<String, Paciente> pacientes = new HashMap<>();
@@ -51,4 +54,23 @@ public class PacienteService {
         Paciente paciente = buscarPaciente(cpf);
         pacientes.remove(cpf);
     }
+
+
+
+
+    /*
+    private static PacienteService pacienteService;
+
+    public static PacienteService getInstance() {
+        if (pacienteService == null) {
+            pacienteService = new PacienteService();
+        }
+        return pacienteService;
+    }
+
+    private PacienteService() {
+
+    }
+
+ */
 }
