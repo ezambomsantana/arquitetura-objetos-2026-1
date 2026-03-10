@@ -194,9 +194,7 @@ A aplicação deve:
 - Utilizar Spring Boot
 - Implementar camadas:
   - Controller
-  - Service]
-- Utilizar DTOs para entrada e saída de dados
-- Utilizar validações com Bean Validation (`@NotNull`, `@Email`, etc.)
+  - Service
 
 ---
 
@@ -217,5 +215,5 @@ A aplicação deve:
 - Código organizado
 - README explicando como rodar a aplicação
 - Coleção Postman
-- Data: 12/03
+- Data: 18/03
 - Onde: BlackBoard - Entrega 2
