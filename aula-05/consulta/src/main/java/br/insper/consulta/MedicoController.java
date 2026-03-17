@@ -12,7 +12,7 @@ public class MedicoController {
     private MedicoService medicoService;
 
     @GetMapping("/medico")
-    public Collection<Medico> getMedicos() {
+    public Collection<Medico> getMedicos(@RequestHeader(name = "X-USER-ID") String id) {
         return medicoService.listarMedicos();
     }
 

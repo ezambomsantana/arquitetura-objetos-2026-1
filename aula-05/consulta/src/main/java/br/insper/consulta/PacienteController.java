@@ -11,7 +11,7 @@ import java.util.Collection;
 public class PacienteController {
 
     @Autowired
-    private PacienteService pacienteService;
+    private PacienteService pacienteService ;
 
     @GetMapping("/paciente")
     public Collection<Paciente> getPacientes(
