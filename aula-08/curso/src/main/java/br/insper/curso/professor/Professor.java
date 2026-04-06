@@ -1,7 +1,7 @@
-package br.insper.curso.disciplina;
+package br.insper.curso.professor;
 
-import br.insper.curso.curso.Curso;
-import br.insper.curso.professor.Professor;
+import br.insper.curso.disciplina.Disciplina;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,11 +9,12 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class Disciplina {
+public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +23,12 @@ public class Disciplina {
     @Column(nullable = false)
     private String nome;
 
-    private Integer cargaHoraria;
+    @Column(nullable = false, unique = true)
+    private String cpf;
 
-    private String ementa;
-
-    @ManyToOne
-    @JoinColumn(name = "id_curso")
-    private Curso curso;
-
-
-    @ManyToOne
-    @JoinColumn(name = "id_professor")
-    private Professor professor;
+    @JsonIgnore
+    @OneToMany(mappedBy = "curso")
+    private List<Disciplina> disciplinas;
 
     @CreationTimestamp
     private LocalDateTime dataCriacao;

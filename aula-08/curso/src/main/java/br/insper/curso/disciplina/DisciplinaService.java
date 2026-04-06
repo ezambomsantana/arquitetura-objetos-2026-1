@@ -2,6 +2,8 @@ package br.insper.curso.disciplina;
 
 import br.insper.curso.curso.Curso;
 import br.insper.curso.curso.CursoService;
+import br.insper.curso.professor.Professor;
+import br.insper.curso.professor.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,12 @@ public class DisciplinaService {
     @Autowired
     private CursoService cursoService;
 
+    @Autowired
+    private ProfessorService professorService;
+
     public Disciplina save(Disciplina disciplina) {
         Curso curso = cursoService.get(disciplina.getCurso().getId());
+        Professor professor = professorService.get(disciplina.getProfessor().getId());
 
         disciplina.setCurso(curso);
         return disciplinaRepository.save(disciplina);
