@@ -26,8 +26,15 @@ public class Professor {
     @Column(nullable = false, unique = true)
     private String cpf;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TitulacaoProfessor titulacao;
+
     @JsonIgnore
-    @OneToMany(mappedBy = "curso")
+    @OneToMany(mappedBy = "professor")
     private List<Disciplina> disciplinas;
 
     @CreationTimestamp

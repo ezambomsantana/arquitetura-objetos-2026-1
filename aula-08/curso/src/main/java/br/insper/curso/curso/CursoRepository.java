@@ -12,6 +12,4 @@ public interface CursoRepository extends JpaRepository<Curso, Integer> {
 
     List<Curso> findByNome(String nome);
 
-    List<Curso> findByDataCriacaoGreaterThan(LocalDateTime dataCriacao);
-
 }

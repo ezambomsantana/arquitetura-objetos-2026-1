@@ -26,6 +26,8 @@ public class Disciplina {
 
     private String ementa;
 
+    private Integer semestre;
+
     @ManyToOne
     @JoinColumn(name = "id_curso")
     private Curso curso;

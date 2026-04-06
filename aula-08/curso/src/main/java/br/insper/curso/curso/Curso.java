@@ -25,11 +25,18 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false, unique = true)
+    private String codigo;
+
     @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)
     private String descricao;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private NivelCurso nivel;
 
     @JsonIgnore
     @OneToMany(mappedBy = "curso")
