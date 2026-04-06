@@ -1,8 +1,8 @@
 package br.insper.curso.professor;
 
 public enum TitulacaoProfessor {
-    GRADUACAO,
+    GRADUADO,
     ESPECIALISTA,
-    MESTRADO,
-    DOUTORADO
+    MESTRE,
+    DOUTOR
 }
