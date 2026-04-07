@@ -32,7 +32,6 @@ public class Disciplina {
     @JoinColumn(name = "id_curso")
     private Curso curso;
 
-
     @ManyToOne
     @JoinColumn(name = "id_professor")
     private Professor professor;
