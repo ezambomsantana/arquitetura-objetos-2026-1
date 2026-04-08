@@ -1,34 +1,24 @@
-# Novas Buscas e filtros
+# DTOs
 
-1 - Buscar curso pelo nome usando filtro containing
+1 - Vamos adicionar DTOs em todas as rotas de classe Curso
 
-2 - Buscar disciplinas de um curso específico por tipo de curso
-
-3 - Buscar disciplinas de um curso específico e por titulacao do professor
-
-4 - Buscar professores nome que começa por uma string
-
-# Paginação
-
-1 - Adicionar paginação em todas as rotas findAll()
-
+2 - Vamos fazer validação dos campos no DTO
 
 # Exercícios
 
-1 - Altere a ligação entre Disciplina e Aluno para adicionar uma entidade
-intermediaria chamada turma, pois uma disciplina pode ter várias turmas oferecidas,
-uma por semestre por exemplo.
-Os relacionamentos devem ser: 
-- uma disciplina tem N turmas 
-- uma turma sempre tem uma disciplina
-- uma turma tem uma lista de alunos
-- um aluno também participa de uma lista de turmas
+1 - Usar DTOs em todas as rotas da disciplina
 
+2 - Adicionar rota de edit de disciplina com DTO
 
-2 - Crie uma rota para criar uma turma em uma disciplina
+3 - Usar DTOs em todas as rotas de professor
 
-3 - Crie uma rota para adicionar um aluno em uma turma (remova a aluno x disciplina)
+4 - Adicionar rota de edit de professsor com DTO
 
-4 - Crie uma rota para remover um aluno em uma turma (remova a aluno x disciplina)
+5 - Criar a entidade turma, que tem uma relacionamento 1xN com disciplina,
+um disciplina pode ter N turmas, e umma turma pertence a uma disciplina
 
-5 - Crie uma rota que liste todas as turmas com paginação e com filtro do semestre daquela turma
+6 - Trocar o relacionamento de Professor de Disciplina para Turma
+
+# Desafio
+
+- Criar a entidade Aluno e fazer um relacionamento NxN com Turma
