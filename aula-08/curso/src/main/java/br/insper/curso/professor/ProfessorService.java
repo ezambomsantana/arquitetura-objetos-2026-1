@@ -5,6 +5,8 @@ import br.insper.curso.curso.CursoService;
 import br.insper.curso.disciplina.Disciplina;
 import br.insper.curso.disciplina.DisciplinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,8 @@ public class ProfessorService {
         return professorRepository.save(professor);
     }
 
-    public List<Professor> list() {
-        return professorRepository.findAll();
+    public Page<Professor> list(Pageable pageable) {
+        return professorRepository.findAll(pageable);
     }
 
     public Professor get(Integer id) {

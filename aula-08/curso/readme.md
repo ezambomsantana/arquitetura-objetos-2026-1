@@ -13,29 +13,22 @@
 1 - Adicionar paginação em todas as rotas findAll()
 
 
-# DTOs
+# Exercícios
 
-1 - Adicionar DTOs para rotas de save
-
-2 - Adicionar DTOs para rotas de edit
-
-3 - Adicionar um DTO de reposta
-
-
-# Novas Rotas
-
-1 - Adicionar rota para trocar um professor de uma disciplina
-
-2 - Adicionar rota que mostra estátisticas do curso, por enquanto, número de disciplinas, carga horária total e número de professores
-
-3 - Adicionar rota de edit de disciplina com DTO
-
-4 - Adicionar rota de edit de professsor com DTO
-
-5 - Adicionar rota para duplicar uma disciplina para um novo curso
+1 - Altere a ligação entre Disciplina e Aluno para adicionar uma entidade
+intermediaria chamada turma, pois uma disciplina pode ter várias turmas oferecidas,
+uma por semestre por exemplo.
+Os relacionamentos devem ser: 
+- uma disciplina tem N turmas 
+- uma turma sempre tem uma disciplina
+- uma turma tem uma lista de alunos
+- um aluno também participa de uma lista de turmas
 
 
+2 - Crie uma rota para criar uma turma em uma disciplina
 
-# Desafio
+3 - Crie uma rota para adicionar um aluno em uma turma (remova a aluno x disciplina)
 
-Adicionar um relacionamento ManyToMany entre Disciplina e Aluno
+4 - Crie uma rota para remover um aluno em uma turma (remova a aluno x disciplina)
+
+5 - Crie uma rota que liste todas as turmas com paginação e com filtro do semestre daquela turma

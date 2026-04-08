@@ -2,6 +2,8 @@ package br.insper.curso.curso;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +18,13 @@ public class CursoService {
         return cursoRepository.save(curso);
     }
 
-    public List<Curso> list(String nome) {
+    public Page<Curso> list(String nome, NivelCurso nivelCurso, Pageable pageable) {
         if (nome != null) {
-            return cursoRepository.findByNome(nome);
+            return cursoRepository.findByNomeContaining(nome, pageable);
+        } else if (nivelCurso != null) {
+            return cursoRepository.findByNivel(nivelCurso, pageable);
         }
-        return cursoRepository.findAll();
+        return cursoRepository.findAll(pageable);
     }
 
     public Curso get(Integer id) {
