@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.jspecify.annotations.NonNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -47,5 +48,14 @@ public class Curso {
 
     @UpdateTimestamp
     private LocalDateTime dataAtualizacao;
+
+    public static @NonNull Curso toModel(SaveCursoDTO saveCursoDTO) {
+        Curso curso = new Curso();
+        curso.setCodigo(saveCursoDTO.getCodigo());
+        curso.setNome(saveCursoDTO.getNome());
+        curso.setDescricao(saveCursoDTO.getDescricao());
+        curso.setNivel(saveCursoDTO.getNivel());
+        return curso;
+    }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Integer> {
@@ -20,6 +21,10 @@ public interface CursoRepository extends JpaRepository<Curso, Integer> {
     List<Curso> findByDataCriacaoGreaterThanEqual(LocalDateTime data);
 
     Page<Curso> findByNivel(NivelCurso nivelCurso, Pageable pageable);
+
+    Optional<Curso> findByCodigo(String codigo);
+
+    boolean existsByCodigo(String codigo);
     // SELECT * From curso WHERE dataCriacao >= ?data
 
 }

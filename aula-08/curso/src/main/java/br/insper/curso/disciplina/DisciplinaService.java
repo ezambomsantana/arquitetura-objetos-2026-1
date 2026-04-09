@@ -23,7 +23,7 @@ public class DisciplinaService {
     private ProfessorService professorService;
 
     public Disciplina save(Disciplina disciplina) {
-        Curso curso = cursoService.get(disciplina.getCurso().getId());
+        Curso curso = null; //cursoService.get(disciplina.getCurso().getId());
         Professor professor = professorService.get(disciplina.getProfessor().getId());
 
         disciplina.setCurso(curso);

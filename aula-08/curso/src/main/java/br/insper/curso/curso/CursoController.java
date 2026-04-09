@@ -1,5 +1,6 @@
 package br.insper.curso.curso;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +18,7 @@ public class CursoController {
 
     // /curso?nome=Computação&nivel=GRADUACAO
     @GetMapping
-    public Page<Curso> listCursos(
+    public Page<ResponseCursoDTO> listCursos(
             @RequestParam(required = false, name = "nome") String nome,
             @RequestParam(required = false, name="nivel") NivelCurso nivelCurso,
             Pageable pageable) {
@@ -25,18 +26,18 @@ public class CursoController {
     }
 
     @PostMapping
-    public Curso saveCurso(@RequestBody Curso curso) {
+    public ResponseCursoDTO saveCurso(@Valid @RequestBody SaveCursoDTO curso) {
         return cursoService.save(curso);
     }
 
-    @GetMapping("/{id}")
-    public Curso getCurso(@PathVariable Integer id) {
-        return cursoService.get(id);
+    @GetMapping("/{codigo}")
+    public ResponseCursoDTO getCurso(@PathVariable String codigo) {
+        return cursoService.getDTO(codigo);
     }
 
-    @PutMapping("/{id}")
-    public Curso editCurso(@PathVariable Integer id, @RequestBody Curso curso) {
-        return cursoService.edit(id, curso);
+    @PutMapping("/{codigo}")
+    public ResponseCursoDTO editCurso(@PathVariable String codigo, @RequestBody EditCursoDTO curso) {
+        return cursoService.edit(codigo, curso);
     }
 
 

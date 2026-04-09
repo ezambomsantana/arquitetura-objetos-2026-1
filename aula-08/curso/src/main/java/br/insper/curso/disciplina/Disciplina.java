@@ -3,6 +3,9 @@ package br.insper.curso.disciplina;
 import br.insper.curso.curso.Curso;
 import br.insper.curso.professor.Professor;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -22,10 +25,15 @@ public class Disciplina {
     @Column(nullable = false)
     private String nome;
 
+    @Min(0)
+    @Max(200)
     private Integer cargaHoraria;
 
     private String ementa;
 
+    @NotNull
+    @Min(1)
+    @Max(12)
     private Integer semestre;
 
     @ManyToOne
