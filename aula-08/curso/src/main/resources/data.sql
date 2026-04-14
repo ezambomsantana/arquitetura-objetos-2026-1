@@ -55,3 +55,26 @@ VALUES
     ('Big Data', 60, 'Processamento distribuído', 2, 5, 8),
     ('Visualização de Dados', 40, 'Gráficos e storytelling', 3, 5, 9),
     ('NLP', 60, 'Processamento de linguagem natural', 4, 5, 10);
+
+
+INSERT INTO aluno (nome, cpf) VALUES
+      ('Ana Silva', '11111111101'),
+      ('Bruno Souza', '11111111102'),
+      ('Carlos Pereira', '11111111103'),
+      ('Daniela Costa', '11111111104'),
+      ('Eduardo Lima', '11111111105'),
+      ('Fernanda Alves', '11111111106'),
+      ('Gabriel Martins', '11111111107'),
+      ('Helena Rocha', '11111111108'),
+      ('Igor Fernandes', '11111111109'),
+      ('Juliana Ribeiro', '11111111110'),
+      ('Lucas Gomes', '11111111111'),
+      ('Mariana Carvalho', '11111111112'),
+      ('Nicolas Barbosa', '11111111113'),
+      ('Olivia Teixeira', '11111111114'),
+      ('Paulo Henrique', '11111111115'),
+      ('Queila Santos', '11111111116'),
+      ('Rafael Moreira', '11111111117'),
+      ('Sofia Duarte', '11111111118'),
+      ('Thiago Araujo', '11111111119'),
+      ('Vanessa Freitas', '11111111120');

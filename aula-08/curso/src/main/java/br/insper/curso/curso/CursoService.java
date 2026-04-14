@@ -39,9 +39,8 @@ public class CursoService {
     }
 
     public Curso get(String codigo) {
-        Curso curso = cursoRepository.findByCodigo(codigo)
+        return cursoRepository.findByCodigo(codigo)
                 .orElseThrow(() -> new RuntimeException());
-        return curso;
     }
 
     public ResponseCursoDTO getDTO(String codigo) {

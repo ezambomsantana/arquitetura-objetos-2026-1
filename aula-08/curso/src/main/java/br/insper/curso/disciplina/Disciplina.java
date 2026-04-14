@@ -1,5 +1,6 @@
 package br.insper.curso.disciplina;
 
+import br.insper.curso.aluno.Aluno;
 import br.insper.curso.curso.Curso;
 import br.insper.curso.professor.Professor;
 import jakarta.persistence.*;
@@ -12,6 +13,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,15 +27,10 @@ public class Disciplina {
     @Column(nullable = false)
     private String nome;
 
-    @Min(0)
-    @Max(200)
     private Integer cargaHoraria;
 
     private String ementa;
 
-    @NotNull
-    @Min(1)
-    @Max(12)
     private Integer semestre;
 
     @ManyToOne
@@ -43,6 +40,13 @@ public class Disciplina {
     @ManyToOne
     @JoinColumn(name = "id_professor")
     private Professor professor;
+
+
+    @ManyToMany
+    @JoinTable(name = "alunos_disciplinas",
+            joinColumns = @JoinColumn(name = "id_disciplina"),
+            inverseJoinColumns = @JoinColumn(name = "id_aluno"))
+    private List<Aluno> alunos;
 
     @CreationTimestamp
     private LocalDateTime dataCriacao;

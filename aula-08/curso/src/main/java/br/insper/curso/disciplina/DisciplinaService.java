@@ -1,5 +1,7 @@
 package br.insper.curso.disciplina;
 
+import br.insper.curso.aluno.Aluno;
+import br.insper.curso.aluno.AlunoService;
 import br.insper.curso.curso.Curso;
 import br.insper.curso.curso.CursoService;
 import br.insper.curso.curso.NivelCurso;
@@ -22,6 +24,9 @@ public class DisciplinaService {
     @Autowired
     private ProfessorService professorService;
 
+    @Autowired
+    private AlunoService alunoService;
+
     public Disciplina save(Disciplina disciplina) {
         Curso curso = null; //cursoService.get(disciplina.getCurso().getId());
         Professor professor = professorService.get(disciplina.getProfessor().getId());
@@ -37,4 +42,15 @@ public class DisciplinaService {
         return disciplinaRepository.findAll();
     }
 
+    public Disciplina addAluno(Integer idDisciplina, Integer idAluno) {
+
+        Aluno aluno = alunoService.getAluno(idAluno);
+
+        Disciplina disciplina = disciplinaRepository.findById(idDisciplina)
+                .orElseThrow(() -> new RuntimeException());
+
+        disciplina.getAlunos().add(aluno);
+        return disciplinaRepository.save(disciplina);
+
+    }
 }

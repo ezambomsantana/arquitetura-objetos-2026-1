@@ -24,4 +24,9 @@ public class DisciplinaController {
     public Disciplina saveDisciplina(@RequestBody Disciplina disciplina) {
         return disciplinaService.save(disciplina);
     }
+
+    @PostMapping("/{idDisciplina}/aluno/{idAluno}")
+    public Disciplina saveDisciplina(@PathVariable Integer idDisciplina, @PathVariable Integer idAluno) {
+        return disciplinaService.addAluno(idDisciplina, idAluno);
+    }
 }
