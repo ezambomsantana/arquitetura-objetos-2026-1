@@ -1,4 +1,4 @@
-package br.insper.curso.curso;
+package br.insper.curso.curso.dto;
 
 import lombok.Getter;
 import lombok.Setter;

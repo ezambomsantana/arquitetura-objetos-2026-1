@@ -1,12 +1,13 @@
 package br.insper.curso.curso;
 
+import br.insper.curso.curso.dto.EditCursoDTO;
+import br.insper.curso.curso.dto.ResponseCursoDTO;
+import br.insper.curso.curso.dto.SaveCursoDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/curso")

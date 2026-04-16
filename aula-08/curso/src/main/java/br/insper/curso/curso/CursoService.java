@@ -1,14 +1,14 @@
 package br.insper.curso.curso;
 
-import jakarta.transaction.Transactional;
-import org.jspecify.annotations.NonNull;
+import br.insper.curso.curso.dto.EditCursoDTO;
+import br.insper.curso.curso.dto.ResponseCursoDTO;
+import br.insper.curso.curso.dto.SaveCursoDTO;
+import br.insper.curso.curso.exception.CursoAlreadyExistsException;
+import br.insper.curso.curso.exception.CursoNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CursoService {
@@ -17,6 +17,10 @@ public class CursoService {
     private CursoRepository cursoRepository;
 
     public ResponseCursoDTO save(SaveCursoDTO saveCursoDTO) {
+
+        if (cursoRepository.existsByCodigo(saveCursoDTO.getCodigo())) {
+            throw new CursoAlreadyExistsException();
+        }
         Curso curso = Curso.toModel(saveCursoDTO);
         curso = cursoRepository.save(curso);
         return ResponseCursoDTO.toDTO(curso);
@@ -40,7 +44,7 @@ public class CursoService {
 
     public Curso get(String codigo) {
         return cursoRepository.findByCodigo(codigo)
-                .orElseThrow(() -> new RuntimeException());
+                .orElseThrow(() -> new CursoNotFoundException());
     }
 
     public ResponseCursoDTO getDTO(String codigo) {

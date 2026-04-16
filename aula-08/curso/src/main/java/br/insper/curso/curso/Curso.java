@@ -1,6 +1,7 @@
 package br.insper.curso.curso;
 
 
+import br.insper.curso.curso.dto.SaveCursoDTO;
 import br.insper.curso.disciplina.Disciplina;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
