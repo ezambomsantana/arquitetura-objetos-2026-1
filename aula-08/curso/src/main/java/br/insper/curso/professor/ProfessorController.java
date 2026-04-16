@@ -17,12 +17,18 @@ public class ProfessorController {
     private ProfessorService professorService;
 
     @GetMapping
-    public Page<Professor> listProfessor(Pageable pageable) {
+    public Page<ResponseProfessorDTO> listProfessor(Pageable pageable) {
         return professorService.list(pageable);
     }
 
+
+    @GetMapping("/{cpf}")
+    public ResponseProfessorDTO getProfessor(@PathVariable String cpf) {
+        return professorService.getDto(cpf);
+    }
+
     @PostMapping
-    public Professor saveDisciplina(@RequestBody Professor professor) {
+    public ResponseProfessorDTO saveDisciplina(@RequestBody SaveProfessorDTO professor) {
         return professorService.save(professor);
     }
 }

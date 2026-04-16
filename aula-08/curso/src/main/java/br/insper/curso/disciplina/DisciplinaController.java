@@ -21,8 +21,8 @@ public class DisciplinaController {
     }
 
     @PostMapping
-    public Disciplina saveDisciplina(@RequestBody Disciplina disciplina) {
-        return disciplinaService.save(disciplina);
+    public Disciplina saveDisciplina(@RequestBody SaveDisciplinaDTO saveDisciplinaDTO) {
+        return disciplinaService.save(saveDisciplinaDTO);
     }
 
     @PostMapping("/{idDisciplina}/aluno/{idAluno}")

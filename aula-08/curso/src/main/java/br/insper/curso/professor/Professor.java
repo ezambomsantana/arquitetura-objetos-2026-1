@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.jspecify.annotations.NonNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -42,5 +43,14 @@ public class Professor {
 
     @UpdateTimestamp
     private LocalDateTime dataAtualizacao;
+
+    public static @NonNull Professor toModel(SaveProfessorDTO saveProfessorDTO) {
+        Professor professor = new Professor();
+        professor.setCpf(saveProfessorDTO.getCpf());
+        professor.setEmail(saveProfessorDTO.getEmail());
+        professor.setNome(saveProfessorDTO.getNome());
+        professor.setTitulacao(saveProfessorDTO.getTitulacao());
+        return professor;
+    }
 
 }

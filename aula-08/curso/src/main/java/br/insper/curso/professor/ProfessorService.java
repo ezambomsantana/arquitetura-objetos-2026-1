@@ -4,6 +4,7 @@ import br.insper.curso.curso.Curso;
 import br.insper.curso.curso.CursoService;
 import br.insper.curso.disciplina.Disciplina;
 import br.insper.curso.disciplina.DisciplinaRepository;
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,19 +18,27 @@ public class ProfessorService {
     @Autowired
     private ProfessorRepository professorRepository;
 
-    @Autowired
-    private CursoService cursoService;
+    public ResponseProfessorDTO save(SaveProfessorDTO saveProfessorDTO) {
 
-    public Professor save(Professor professor) {
-        return professorRepository.save(professor);
+        Professor professor = Professor.toModel(saveProfessorDTO);
+
+        professor = professorRepository.save(professor);
+        return ResponseProfessorDTO.toDTO(professor);
     }
 
-    public Page<Professor> list(Pageable pageable) {
-        return professorRepository.findAll(pageable);
+    public Page<ResponseProfessorDTO> list(Pageable pageable) {
+        return professorRepository
+                .findAll(pageable)
+                .map(p -> ResponseProfessorDTO.toDTO(p));
     }
 
-    public Professor get(Integer id) {
-        return professorRepository.findById(id)
+    public Professor findProfessorByCpf(String cpf) {
+        return professorRepository
+                .findByCpf(cpf)
                 .orElseThrow(() -> new RuntimeException());
+    }
+
+    public ResponseProfessorDTO getDto(String cpf) {
+        return ResponseProfessorDTO.toDTO(findProfessorByCpf(cpf));
     }
 }

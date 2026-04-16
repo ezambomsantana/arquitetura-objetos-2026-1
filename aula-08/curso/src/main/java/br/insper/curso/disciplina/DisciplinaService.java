@@ -7,6 +7,7 @@ import br.insper.curso.curso.CursoService;
 import br.insper.curso.curso.NivelCurso;
 import br.insper.curso.professor.Professor;
 import br.insper.curso.professor.ProfessorService;
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,13 +28,15 @@ public class DisciplinaService {
     @Autowired
     private AlunoService alunoService;
 
-    public Disciplina save(Disciplina disciplina) {
-        Curso curso = null; //cursoService.get(disciplina.getCurso().getId());
-        Professor professor = professorService.get(disciplina.getProfessor().getId());
+    public Disciplina save(SaveDisciplinaDTO saveDisciplinaDTO) {
+        Curso curso = cursoService.get(saveDisciplinaDTO.getCodigoCurso());
+        Professor professor = professorService.findProfessorByCpf(saveDisciplinaDTO.getCpfProfessor());
 
-        disciplina.setCurso(curso);
+        Disciplina disciplina = Disciplina.toModel(saveDisciplinaDTO, professor, curso);
         return disciplinaRepository.save(disciplina);
     }
+
+
 
     public List<Disciplina> list(NivelCurso nivel) {
         if (nivel != null) {

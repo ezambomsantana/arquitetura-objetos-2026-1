@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.jspecify.annotations.NonNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -53,5 +54,17 @@ public class Disciplina {
 
     @UpdateTimestamp
     private LocalDateTime dataAtualizacao;
+
+    public static @NonNull Disciplina toModel(SaveDisciplinaDTO saveDisciplinaDTO, Professor professor, Curso curso) {
+        Disciplina disciplina = new Disciplina();
+        disciplina.setEmenta(saveDisciplinaDTO.getEmenta());
+        disciplina.setNome(saveDisciplinaDTO.getNome());
+        disciplina.setSemestre(saveDisciplinaDTO.getSemestre());
+        disciplina.setCargaHoraria(saveDisciplinaDTO.getCargaHoraria());
+
+        disciplina.setProfessor(professor);
+        disciplina.setCurso(curso);
+        return disciplina;
+    }
 
 }
