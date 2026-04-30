@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '';
 
 async function request(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
@@ -28,15 +28,15 @@ export function listCursos({ nome = '', nivel = '', page = 0, size = 10 } = {}) 
   if (nome) params.set('nome', nome);
   if (nivel) params.set('nivel', nivel);
 
-  return request(`/curso?${params.toString()}`);
+  return request(`/api/curso?${params.toString()}`);
 }
 
 export function getCurso(codigo) {
-  return request(`/curso/${encodeURIComponent(codigo)}`);
+  return request(`/api/curso/${encodeURIComponent(codigo)}`);
 }
 
 export function createCurso(payload) {
-  return request('/curso', {
+  return request('/api/curso', {
     method: 'POST',
     body: JSON.stringify(payload),
   });
